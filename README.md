@@ -1,4 +1,4 @@
-# cloudron-io@iptoasn
+# asnlookup
 
 Node.JS module for getting ASN for a given IP address. It uses data from
 http://thyme.apnic.net/current/ .
@@ -7,7 +7,7 @@ Mostly inspired by https://www.npmjs.com/package/iptoasn but without native code
 
 ## Installation
 
-`npm install --save cloudron-io@iptoasn`
+`npm install --save asnlookup`
 
 ## Description
 
@@ -21,7 +21,7 @@ format that allows for a quick search.
 'use strict';
 
 // you must pass a filepath in which database will be saved
-const iptoasn = require('./index.js')('.iptoasn.cache');
+const asnlookup = require('./index.js')('.asnlookup.cache');
 
 (async function() {
     const testArray = [
@@ -33,12 +33,12 @@ const iptoasn = require('./index.js')('.iptoasn.cache');
         'asd'
     ];
 
-    await iptoasn.load();
+    await asnlookup.load();
 
     // check when the database was updated
     // lastUpdated are days
     // lastUpdated is Infinity if there's no database at all
-    const lastUpdated = await iptoasn.lastUpdated();
+    const lastUpdated = await asnlookup.lastUpdated();
 
     console.log(`Last updated ${lastUpdated} days ago.`);
 
@@ -46,11 +46,11 @@ const iptoasn = require('./index.js')('.iptoasn.cache');
     // you must call .load() even if you don't update the database
     if (lastUpdated > 31) {
         console.log('Cache too old or never created. Updating...');
-        await iptoasn.update();
+        await asnlookup.update();
     }
 
     testArray.forEach(function(ip) {
-        console.log(ip, '-', iptoasn.lookup(ip));
+        console.log(ip, '-', asnlookup.lookup(ip));
     });
 })();
 ```

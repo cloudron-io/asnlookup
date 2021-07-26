@@ -2,7 +2,7 @@
 
 const fs = require('fs'),
     path = require('path'),
-    debug = require('debug')('iptoasn'),
+    debug = require('debug')('asnlookup'),
     ipcheck = require('ipcheck'),
     superagent = require('superagent');
 
@@ -80,12 +80,12 @@ async function load() {
     try {
         gCache = JSON.parse(fs.readFileSync(gCacheFilePath, 'utf8'));
     } catch (e) {
-        debug('No iptoasn cache found. Call update() first');
+        debug('No asnlookup cache found. Call update() first');
     }
 }
 
 exports = module.exports = function (cacheFilePath) {
-    gCacheFilePath = path.resolve(typeof cacheFilePath === 'string' && cacheFilePath ? cacheFilePath : '.iptoasn.cache');
+    gCacheFilePath = path.resolve(typeof cacheFilePath === 'string' && cacheFilePath ? cacheFilePath : '.asnlookup.cache');
 
     return {
         load,

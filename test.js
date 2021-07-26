@@ -9,7 +9,7 @@ const expect = require('expect.js'),
     fs = require('fs'),
     path = require('path');
 
-const TEST_CACHE_FILE = '.iptoasn.tests.cache';
+const TEST_CACHE_FILE = '.asnlookup.tests.cache';
 
 function cleanup() {
     try {
@@ -17,16 +17,16 @@ function cleanup() {
     } catch (e) {}
 }
 
-describe('iptoasn', function () {
+describe('asnlookup', function () {
     this.timeout(10000);
 
     before(cleanup);
     after(cleanup);
 
     it('last updated is Infinity without cache', function () {
-        const iptoasn = require('./index.js')(TEST_CACHE_FILE);
+        const asnlookup = require('./index.js')(TEST_CACHE_FILE);
 
-        const lastUpdated = iptoasn.lastUpdated();
+        const lastUpdated = asnlookup.lastUpdated();
 
         expect(lastUpdated).to.equal(Infinity);
     });
@@ -34,37 +34,37 @@ describe('iptoasn', function () {
     it('can update cache initially', async function () {
         this.timeout(0);
 
-        const iptoasn = require('./index.js')(TEST_CACHE_FILE);
+        const asnlookup = require('./index.js')(TEST_CACHE_FILE);
 
         console.log('Updating cache, this takes some time...');
-        await iptoasn.update();
+        await asnlookup.update();
 
-        const lastUpdated = iptoasn.lastUpdated();
+        const lastUpdated = asnlookup.lastUpdated();
 
         expect(lastUpdated).to.equal(0);
     });
 
     it('can load from cache', async function () {
-        const iptoasn = require('./index.js')(TEST_CACHE_FILE);
+        const asnlookup = require('./index.js')(TEST_CACHE_FILE);
 
-        await iptoasn.load();
+        await asnlookup.load();
 
-        const lastUpdated = iptoasn.lastUpdated();
+        const lastUpdated = asnlookup.lastUpdated();
 
         expect(lastUpdated).to.equal(0);
     });
 
     it('lookup succeeds for 8.8.8.8', async function () {
-        const iptoasn = require('./index.js')(TEST_CACHE_FILE);
-        await iptoasn.load();
+        const asnlookup = require('./index.js')(TEST_CACHE_FILE);
+        await asnlookup.load();
 
-        expect(iptoasn.lookup('8.8.8.8')).to.equal('LEVEL3');
+        expect(asnlookup.lookup('8.8.8.8')).to.equal('LEVEL3');
     });
 
     it('lookup succeeds with null for 127.0.0.1', async function () {
-        const iptoasn = require('./index.js')(TEST_CACHE_FILE);
-        await iptoasn.load();
+        const asnlookup = require('./index.js')(TEST_CACHE_FILE);
+        await asnlookup.load();
 
-        expect(iptoasn.lookup('127.0.0.1')).to.eql(null);
+        expect(asnlookup.lookup('127.0.0.1')).to.eql(null);
     });
 });

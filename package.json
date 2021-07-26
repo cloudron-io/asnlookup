@@ -1,14 +1,14 @@
 {
-  "name": "iptoasn",
+  "name": "asnlookup",
   "version": "0.1.0",
-  "description": "IP to ASN using BGP table listings from http://thyme.apnic.net/current/",
+  "description": "IP to ASN lookup using BGP table listings from http://thyme.apnic.net/current/",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cloudron-io/iptoasn.git"
+    "url": "git+https://github.com/cloudron-io/asnlookup.git"
   },
   "keywords": [
     "asn",
