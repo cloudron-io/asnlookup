@@ -20,7 +20,7 @@ format that allows for a quick search.
 ```javascript
 'use strict';
 
-// you must pass a filepath in which database will be saved
+// you must pass a filepath for the local cache, otherwise .asnlookup.cache will be used
 const asnlookup = require('./index.js')('.asnlookup.cache');
 
 (async function() {
@@ -33,17 +33,17 @@ const asnlookup = require('./index.js')('.asnlookup.cache');
         'asd'
     ];
 
+    // call .load() for an attempt to load the local cache, this will require 10s of MB of memory!
     await asnlookup.load();
 
-    // check when the database was updated
+    // check when the cache was updated
     // lastUpdated are days
-    // lastUpdated is Infinity if there's no database at all
+    // lastUpdated is Infinity if there's no cache at all
     const lastUpdated = await asnlookup.lastUpdated();
 
     console.log(`Last updated ${lastUpdated} days ago.`);
 
-    // update the database if it's older than 31 days
-    // you must call .load() even if you don't update the database
+    // update the cache if it's older than 31 days
     if (lastUpdated > 31) {
         console.log('Cache too old or never created. Updating...');
         await asnlookup.update();
