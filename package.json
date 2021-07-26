@@ -1,6 +1,6 @@
 {
   "name": "iptoasn",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Module for getting ASN for a given IP address using data from http://thyme.apnic.net/current/",
   "main": "index.js",
   "scripts": {
