@@ -1,12 +1,22 @@
 {
   "name": "iptoasn",
   "version": "0.1.0",
-  "description": "Module for getting ASN for a given IP address using data from http://thyme.apnic.net/current/",
+  "description": "IP to ASN using BGP table listings from http://thyme.apnic.net/current/",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudron-io/iptoasn.git"
+  },
+  "keywords": [
+    "asn",
+    "ip",
+    "thyme",
+    "apnic"
+  ],
+  "author": "Johannes Zellner <support@cloudron.io>",
   "license": "MIT",
   "dependencies": {
     "debug": "^4.3.2",

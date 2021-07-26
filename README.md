@@ -1,5 +1,23 @@
-#!/usr/bin/env node
+# cloduron-io@iptoasn
 
+Node.JS module for getting ASN for a given IP address. It uses data from
+http://thyme.apnic.net/current/ .
+
+Mostly inspired by https://www.npmjs.com/package/iptoasn but without native code and using async/await instead of callback style.
+
+## Installation
+
+`npm install --save cloduron-io@iptoasn`
+
+## Description
+
+This module downloads raw BGP table (~13MB) and ASN to name mapping (~2MB)
+files from http://thyme.apnic.net/current/ and converts them into a more useful
+format that allows for a quick search.
+
+## Usage
+
+```javascript
 'use strict';
 
 // you must pass a filepath in which database will be saved
@@ -35,3 +53,16 @@ const iptoasn = require('./index.js')('.iptoasn.cache');
         console.log(ip, '-', iptoasn.lookup(ip));
     });
 })();
+```
+
+Result of this sample script:
+
+```
+Last updated 0 days ago.
+8.8.8.8 - LEVEL3
+50.22.180.100 - SOFTLAYER
+1.2.3.4 - null
+104.16.181.15 - CLOUDFLARENET
+127.0.0.1 - null
+asd - null
+```
