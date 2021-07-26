@@ -1,0 +1,16 @@
+{
+  "name": "iptoasn",
+  "version": "1.0.0",
+  "description": "Module for getting ASN for a given IP address using data from http://thyme.apnic.net/current/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.2",
+    "ipcheck": "^0.1.0",
+    "superagent": "^6.1.0"
+  }
+}

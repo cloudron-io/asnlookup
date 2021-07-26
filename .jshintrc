@@ -1,0 +1,8 @@
+{
+    "node": true,
+    "browser": true,
+    "unused": true,
+    "globalstrict": true,
+    "predef": [ "angular", "$" ],
+    "esversion": 8
+}
