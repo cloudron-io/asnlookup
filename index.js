@@ -17,7 +17,7 @@ let gCache = {
     provider: {}
 };
 
-async function lastUpdated() {
+function lastUpdated() {
     if (gCache.timestamp === 0) return Infinity;
 
     const daysLastUpdated = parseInt(gCache.timestamp / MS_IN_DAYS);

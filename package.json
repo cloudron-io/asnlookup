@@ -4,7 +4,7 @@
   "description": "Module for getting ASN for a given IP address using data from http://thyme.apnic.net/current/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha ./test.js"
   },
   "author": "",
   "license": "MIT",
@@ -12,5 +12,9 @@
     "debug": "^4.3.2",
     "ipcheck": "^0.1.0",
     "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^9.0.3"
   }
 }

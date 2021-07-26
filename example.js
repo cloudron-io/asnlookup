@@ -2,9 +2,9 @@
 
 'use strict';
 
-// you must pass a directory in which database will be saved
+// you must pass a filepath in which database will be saved
 // if it doesn't exist, it will be created
-const iptoasn = require('./index.js')('cache/');
+const iptoasn = require('./index.js')('.iptoasn.cache');
 
 (async function() {
     const testArray = [
