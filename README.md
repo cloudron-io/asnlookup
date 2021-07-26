@@ -1,4 +1,4 @@
-# cloduron-io@iptoasn
+# cloudron-io@iptoasn
 
 Node.JS module for getting ASN for a given IP address. It uses data from
 http://thyme.apnic.net/current/ .
@@ -7,7 +7,7 @@ Mostly inspired by https://www.npmjs.com/package/iptoasn but without native code
 
 ## Installation
 
-`npm install --save cloduron-io@iptoasn`
+`npm install --save cloudron-io@iptoasn`
 
 ## Description
 
