@@ -39,7 +39,7 @@ const asnlookup = require('./index.js')('.asnlookup.cache');
     // check when the cache was updated
     // lastUpdated are days
     // lastUpdated is Infinity if there's no cache at all
-    const lastUpdated = await asnlookup.lastUpdated();
+    const lastUpdated = asnlookup.lastUpdated();
 
     console.log(`Last updated ${lastUpdated} days ago.`);
 
