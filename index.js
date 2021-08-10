@@ -40,7 +40,13 @@ async function update() {
         const data = l.split('\t');
         if (data.length !== 2) return;
 
-        blocks[data[0]] = data[1];
+        const ipParts = data[0].split('.');
+        if (ipParts.length !== 4) return console.log(data[0], ipParts);
+
+        if (!blocks[ipParts[0]]) blocks[ipParts[0]] = {};
+        if (!blocks[ipParts[0]][ipParts[1]]) blocks[ipParts[0]][ipParts[1]] = {};
+
+        blocks[ipParts[0]][ipParts[1]][ipParts[2] + '.' + ipParts[3]] = data[1];
     });
 
     const providerData = await superagent.get(APNIC_USED_AUTNUMS_URL);
@@ -64,14 +70,24 @@ async function update() {
 function lookup(ip) {
     if (typeof ip !== 'string' || !ip) return 'unkown';
 
-    const block = Object.keys(gCache.blocks).find(function (b) {
-        return ipcheck.match(ip, b);
+    const ipParts = ip.split('.');
+
+    const keyBlockFirst = Object.keys(gCache.blocks).find(function (p) { return p === ipParts[0]; });
+    if (!keyBlockFirst) return null;
+    const blockFirst = gCache.blocks[keyBlockFirst];
+
+    const keyBlockSecond = Object.keys(blockFirst).find(function (p) { return p === ipParts[1]; });
+    if (!keyBlockSecond) return null;
+    const blockSecond = blockFirst[keyBlockSecond];
+
+    const keyBlockRest = Object.keys(blockSecond).find(function (p) {
+        return ipcheck.match(ip, ipParts[0] + '.' + ipParts[1] + '.' + p);
     });
 
-    if (!block) return null;
-    if (!gCache.provider[gCache.blocks[block]]) return 'unknown';
+    if (!keyBlockRest) return null;
+    if (!gCache.provider[blockSecond[keyBlockRest]]) return 'unknown';
 
-    return gCache.provider[gCache.blocks[block]];
+    return gCache.provider[blockSecond[keyBlockRest]];
 }
 
 async function load() {

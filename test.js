@@ -58,7 +58,7 @@ describe('asnlookup', function () {
         const asnlookup = require('./index.js')(TEST_CACHE_FILE);
         await asnlookup.load();
 
-        expect(asnlookup.lookup('8.8.8.8')).to.equal('LEVEL3');
+        expect(asnlookup.lookup('8.8.8.8')).to.equal('GOOGLE');
     });
 
     it('lookup succeeds with null for 127.0.0.1', async function () {

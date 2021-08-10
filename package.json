@@ -1,6 +1,6 @@
 {
   "name": "asnlookup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "IP to ASN lookup using BGP table listings from http://thyme.apnic.net/current/",
   "main": "index.js",
   "scripts": {

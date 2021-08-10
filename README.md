@@ -15,6 +15,9 @@ This module downloads raw BGP table (~13MB) and ASN to name mapping (~2MB)
 files from http://thyme.apnic.net/current/ and converts them into a more useful
 format that allows for a quick search.
 
+WARNING: To improve the lookup speed by a lot only /16 at most is currently supported as the first 2 bytes of the address is used for quick lookup!
+On the upside this makes it more specific for ranges covered by various ASNs
+
 ## Usage
 
 ```javascript
